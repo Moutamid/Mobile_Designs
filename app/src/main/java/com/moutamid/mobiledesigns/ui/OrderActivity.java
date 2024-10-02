@@ -109,7 +109,6 @@ public class OrderActivity extends AppCompatActivity {
                     Constants.dismissDialog();
                     Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 });
-
     }
 
     private boolean valid() {
