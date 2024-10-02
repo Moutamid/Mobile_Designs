@@ -2,9 +2,7 @@ package com.moutamid.mobiledesigns.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,8 +21,8 @@ import com.moutamid.mobiledesigns.databinding.ActivityMainBinding;
 import com.moutamid.mobiledesigns.model.DeviceModels;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -58,12 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding.next.setOnClickListener(v -> {
             if (!binding.models.getEditText().getText().toString().isEmpty()) {
-                list.stream()
-                        .filter(deviceModels -> deviceModels.name.equals(binding.models.getEditText().getText().toString().trim()))
-                        .findFirst()
-                        .ifPresent(device -> startActivity(new Intent(this, DeviceActivity.class)
-                                .putExtra(Constants.DEVICE, SELECTED_DEVICE)
-                                .putExtra(Constants.MODEL_ID, device.id)));
+                Optional<DeviceModels> optionalDevice = list.stream()
+                        .filter(deviceModels -> deviceModels.name.equalsIgnoreCase(binding.models.getEditText().getText().toString().trim()))
+                        .findFirst();
+                if (optionalDevice.isPresent()) {
+                    DeviceModels device = optionalDevice.get();
+                    startActivity(new Intent(this, DeviceActivity.class)
+                            .putExtra(Constants.DEVICE, SELECTED_DEVICE)
+                            .putExtra(Constants.MODEL_ID, device.id));
+                } else {
+                    Toast.makeText(this, "Device not found! Make Sure name is correct", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(this, "Device Model is empty", Toast.LENGTH_SHORT).show();
             }
