@@ -23,6 +23,7 @@ import java.net.URL;
 
 public class Constants {
     static Dialog dialog;
+    public static final String ID = "ID";
     public static final String MODELS = "MODELS";
     public static final String MODEL_ID = "MODEL_ID";
     public static final String DEVICE = "DEVICE";
@@ -30,6 +31,7 @@ public class Constants {
     public static final String iPhone = "iPhone";
     public static final String Samsung = "Samsung";
     public static final String Apple_Watch = "Apple_Watch";
+    public static final String ORDERS = "ORDERS";
 
 
     public static void initDialog(Context context) {

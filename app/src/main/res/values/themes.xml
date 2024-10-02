@@ -17,5 +17,12 @@
     <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowDisablePreview">true</item>
     </style>
+
+    <style name="ShapeAppearanceOverlay.CornerRadius" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+
     <style name="Theme.MobileDesigns" parent="Base.Theme.MobileDesigns" />
 </resources>
