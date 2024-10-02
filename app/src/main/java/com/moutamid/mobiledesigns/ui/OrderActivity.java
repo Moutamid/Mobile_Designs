@@ -91,6 +91,7 @@ public class OrderActivity extends AppCompatActivity {
         orderModel.UID = UUID.randomUUID().toString();
         orderModel.modelID = model.modelID;
         orderModel.productID = model.id;
+        orderModel.productName = model.name;
         orderModel.device = model.device;
         orderModel.price = model.price;
         orderModel.quantity = quantity;
